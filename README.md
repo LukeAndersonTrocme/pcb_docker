@@ -32,11 +32,14 @@ docker run --rm -v $(pwd)/data:/data pca_plotter
 ```
 This command does the following:
 
-docker run tells Docker to run a container.
---rm instructs Docker to remove the container once it stops running.
--v $(pwd)/data:/data mounts the data directory from your project to the /data directory in the container. $(pwd) is replaced by your current directory path, making sure your pca.csv file is accessible to the script inside the container.
-pca_plotter is the name of the Docker image to run.
+`docker run` tells Docker to run a container.
+`--rm` instructs Docker to remove the container once it stops running.
+`-v $(pwd)/data:/data` mounts the data directory from your project to the /data directory in the container. 
+`$(pwd)` is replaced by your current directory path, making sure your `pca.csv` file is accessible to the script inside the container.
+`pca_plotter` is the name of the Docker image to run.
 
+## Runtime
+This docker image took 6 minutes to build on my laptop:
 ```
 luke$ docker build -t pca_plotter .
 [+] Building 392.7s (10/10) FINISHED                                                                                    

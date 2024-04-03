@@ -30,4 +30,4 @@ jobs:
         context: .
         file: ./Dockerfile
         push: true
-        tags: ghcr.io/LukeAndersonTrocme/pcb_docker:latest
+        tags: https://github.com/lukeandersontrocme/pcb_docker:latest

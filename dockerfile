@@ -1,17 +1,21 @@
-# Use the official R base image
-FROM r-base:latest
+# Use a lightweight base image
+FROM python:3.9-slim
 
-# Install required R packages
-RUN R -e "install.packages(c('ggplot2', 'cowplot'), dependencies=TRUE)"
+# Install a package
+RUN pip install pandas
 
-# Copy the R script into the Docker image
-COPY scripts/plot_pca.r /usr/local/bin/plot_pca.r
+# Install bash shell
+RUN apt-get update && apt-get install -y bash
 
-# Make the script executable
-RUN chmod +x /usr/local/bin/plot_pca.r
+# Install a package
+RUN pip install matplotlib seaborn
 
-# Set the working directory to /data
-WORKDIR /data
+# Set the working directory
+WORKDIR /app
 
-# Default command to run the R script
-CMD ["Rscript", "/usr/local/bin/plot_pca.r"]
+# Copy the PCA data file and Python script into the container
+COPY /data/pca.csv /data/pca.csv
+COPY /scripts/plot_pca.py /scripts/plot_pca.py
+
+# Set the entrypoint to start an interactive bash shell
+ENTRYPOINT ["/bin/bash"]

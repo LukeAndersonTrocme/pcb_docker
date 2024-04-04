@@ -14,7 +14,6 @@ This tutorial demonstrates how to containerize an R script using Docker. It focu
 Clone the repository:
 
 ```
-bash
 git clone https://github.com/LukeAndersonTrocme/pcb_docker.git
 cd pcb_docker
 ```

@@ -1,22 +1,15 @@
 # Use a lightweight base image
 FROM python:3.9-slim
 
-# Install a package
-RUN pip install pandas
-
-# Install bash shell
-RUN apt-get update && apt-get install -y bash
-
-# Install a package
-RUN pip install matplotlib seaborn
+# Install required packages
+RUN pip install pandas matplotlib seaborn
 
 # Set the working directory
 WORKDIR /app
 
-# Copy the PCA data file and Python script into the container
-COPY /data/pca.csv /data/pca.csv
-COPY /scripts/plot_pca.py /scripts/plot_pca.py
+# Copy the Python script into the container
+COPY scripts/plot_pca2.py /app/plot_pca2.py
 
-# Change the entrypoint and command to execute the Python script directly
-ENTRYPOINT ["python3"]
-CMD ["/scripts/plot_pca.py"]
+# Set the entrypoint and command
+ENTRYPOINT ["python3", "/app/plot_pca2.py"]
+CMD ["input_data.csv", "output_plot.png"]

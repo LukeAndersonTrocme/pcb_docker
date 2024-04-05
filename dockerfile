@@ -17,5 +17,6 @@ WORKDIR /app
 COPY /data/pca.csv /data/pca.csv
 COPY /scripts/plot_pca.py /scripts/plot_pca.py
 
-# Set the entrypoint to start an interactive bash shell
-ENTRYPOINT ["/bin/bash"]
+# Change the entrypoint and command to execute the Python script directly
+ENTRYPOINT ["python3"]
+CMD ["/scripts/plot_pca.py"]

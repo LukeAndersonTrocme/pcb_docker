@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This tutorial demonstrates how to containerize an R script using Docker. It focuses on a PCA plotting example.
+This tutorial demonstrates how to containerize a simple pca plotting script using Docker.
 
 ## Prerequisites
 
